@@ -1,0 +1,27 @@
+{
+  "name": "botslackmodule-os",
+  "version": "alpha 0.0.0.1",
+  "description": "Add new commands optimized for work for assistant-os based on the work-os by Thibault Friedrich",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/assistant-os/work-os.git"
+  },
+  "keywords": [
+    "bots",
+    "slack",
+    "module",
+    "os",
+    "assistant"
+  ],
+  "author": "Roni Carta",
+  "license": "Just a student",
+  "bugs": {
+    "url": "https://github.com/mrNewmanRons/botslackmodule-os"
+  },
+  "homepage": "https://github.com/assistant-os/work-os#readme"
+}
+
