@@ -75,7 +75,7 @@ function AddInfoKey (ai) {
                             return;
                         }
                         console.log('HOURRA!');
-                        addinfokey.ai.say(addinfokey.user, 'The keys ' + someKeys.join(', ') + ' have been added');
+                        addinfokey.ai.say(addinfokey.user, 'The key(s) ' + someKeys.join(', ') + ' have been added');
                         addinfokey.user = null;
                         
                         

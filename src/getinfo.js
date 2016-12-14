@@ -75,9 +75,9 @@ function GetInfo (ai) {
             console.log('send info');
             if(json.hasOwnProperty(input))
             {
-                getinfo.ai.say(getinfo.user, 'The value is: ' + json[input]);
+                getinfo.ai.say(getinfo.user, 'The value(s) is: ' + json[input]);
             }else{
-                getinfo.ai.say(getinfo.user, 'There is not a key call ' + input);
+                getinfo.ai.say(getinfo.user, 'There is no any key call ' + input);
             }
 
                 
