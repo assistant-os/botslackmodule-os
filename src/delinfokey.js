@@ -70,12 +70,12 @@ function DelInfoKey (ai) {
                         delinfokey.ai.say(delinfokey.user, 'The ' + input + ' has been deleted');
 
                         fs.writeFile(path.join(__dirname, '../infoJson.json'), JSON.stringify(json), function (err){
-                        if(err){
-                            console.log('error: ', err);
-                            return;
-                    }
+                            if(err){
+                                console.log('error: ', err);
+                                return;
+                            }
                     
-                });
+                        });
                         
 
                     }else{

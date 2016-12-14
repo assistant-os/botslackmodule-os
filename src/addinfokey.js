@@ -9,21 +9,38 @@ function AddInfoKey (ai) {
     this.id = 'infoaddkey';
     this.user = null;
 
-    var key;
+    
     var value;
+    var someKeys;
     var addinfokey = this;
     
     this.valid = function (user, message, words) {
         if (this.ai.hasWords(words, 'add info')) {
+            console.log("test");
+            console.log(words);
 			if(words.length >= 4){
-				key = words[2];
-            	value = words[3]; 
-            	for(var i = 4; i < words.length; i++){
-            		value += ' ' + words[i];
-				}
-
-            	this.user = user;
-            	console.log(user);
+                console.log('Test 1');
+                someKeys = [];
+                value = '';
+                for(var i = 2; i<words.length; i+=2){
+                    someKeys.push(words[i]);
+                    console.log('Test 3 :', someKeys);
+                    if(words[i + 1] != 'and' && words[i + 1] != 'or'){
+                        console.log('Test 4 :', words[i+1]);
+                       for(var j = i+1; j < words.length; j++){
+                        console.log('Test 5 :', j);
+                            if(j == i+1){
+                                value += words[j];
+                                console.log('Test 6 :', value);
+                            }else{
+                                value += " " + words[j];
+                                console.log('Test 7 :', value);
+                            }
+                        }     
+                        break;                  
+                    }
+                }
+                this.user = user;
             	return true;
         	} else {
         		return false;
@@ -49,20 +66,24 @@ function AddInfoKey (ai) {
 					json = JSON.parse(data);
         		}	
         		
-        		json[key] = value;
+                for(var i = 0; i<someKeys.length; i++){
+        		  json[someKeys[i]] = value;
+                }
+                 fs.writeFile(path.join(__dirname, '../infoJson.json'), JSON.stringify(json), function (err){
+                        if(err){
+                            console.log('error: ', err);
+                            return;
+                        }
+                        console.log('HOURRA!');
+                        addinfokey.ai.say(addinfokey.user, 'The keys ' + someKeys.join(', ') + ' have been added');
+                        addinfokey.user = null;
+                        
+                        
+                  });
         		
-        		fs.writeFile(path.join(__dirname, '../infoJson.json'), JSON.stringify(json), function (err){
-        			if(err){
-        				console.log('error: ', err);
-        				return;
-        			}
-        			console.log('HOURRA!');
-        			addinfokey.ai.say(addinfokey.user, 'The key ' + key + ' has been added');
-        			addinfokey.user = null;
-        		});
+            	});
+            
 
-        		console.log(data); 
-        	});
        	}
     };
 

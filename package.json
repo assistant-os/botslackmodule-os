@@ -1,6 +1,6 @@
 {
   "name": "botslackmodule-os",
-  "version": "alpha 0.0.0.1",
+  "version": "alpha 0.0.0.2",
   "description": "Add new commands optimized for work for assistant-os based on the work-os by Thibault Friedrich",
   "main": "src/index.js",
   "scripts": {

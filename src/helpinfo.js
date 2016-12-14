@@ -21,7 +21,7 @@ function HelpInfo (ai) {
 
             
 
-            this.ai.say(this.user, 'You have the command:\n "add info <key> <value>"\n"help info"\n"get info <key>"\n"delete info <key>"');
+            this.ai.say(this.user, 'You have the command:\n "add info <key> {and} {key2} {key3} {etc..} <value>"\n"help info"\n"get info <key>"\n"delete info <key>"');
             console.log('HelpInfo');
         }
         this.user = null;

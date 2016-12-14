@@ -13,22 +13,36 @@ function GetInfo (ai) {
     var input;
 
 
+
+
+    
+
+
     this.valid = function (user, message, words) {
         if (this.ai.hasWords(words, 'get info')){
+            console.log("MACHABUDA CA PASSE(get info)");
 
             if(words.length === 3){
                 input = words[2];
             }
-            else
-            {
+            else{
                 return false;
             }
 
             this.user = user;
             return true;
-        } else {
+
+        }else if(words.length == 1){
+            console.log("MACHABUDA CA PASSE(length)");
+            input = words[0];
+            this.user = user;
+
+            return true;
+        }else{
+            console.log("MACHABUDA CA PASSE(false)");
             return false;
         }
+
     };
 
     this.do = function () {
