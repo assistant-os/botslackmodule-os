@@ -69,22 +69,18 @@ function AddInfoKey (ai) {
                 for(var i = 0; i<someKeys.length; i++){
         		  json[someKeys[i]] = value;
                 }
-                 fs.writeFile(path.join(__dirname, '../infoJson.json'), JSON.stringify(json), function (err){
-                        if(err){
-                            console.log('error: ', err);
-                            return;
-                        }
-                        console.log('HOURRA!');
-                        addinfokey.ai.say(addinfokey.user, 'The key(s) ' + someKeys.join(', ') + ' have been added');
-                        addinfokey.user = null;
-                        
-                        
-                  });
+                fs.writeFile(path.join(__dirname, '../infoJson.json'), JSON.stringify(json), function (err){
+                    if(err){
+                        console.log('error: ', err);
+                        return;
+                    }
+                    console.log('HOURRA!');
+                    addinfokey.ai.say(addinfokey.user, 'The key(s) ' + someKeys.join(', ') + ' have been added');
+                    addinfokey.user = null;
+                });
         		
-            	});
-            
-
-       	}
+            });
+        }
     };
 
 }

@@ -15,7 +15,6 @@ function DelInfoKey (ai) {
 
     this.valid = function (user, message, words) {
         if (this.ai.hasWords(words, 'delete info')){
-
             if(words.length === 3){
                 input = words[2];
             }
@@ -34,9 +33,7 @@ function DelInfoKey (ai) {
     this.do = function () {
 
         if (this.user) {
-           
-
-            fs.readFile(path.join(__dirname, '../infoJson.json'), 'utf8', function (err, data) {
+           fs.readFile(path.join(__dirname, '../infoJson.json'), 'utf8', function (err, data) {
                 console.log('file reading');
                 if (err) {
                     if(err.code == "ENOENT")
@@ -62,31 +59,22 @@ function DelInfoKey (ai) {
                 }   
                 
                 var value = json[input];
-
-                    console.log('send info');
-                    if(json.hasOwnProperty(input))
-                    {
-                        delete json[input];
-                        delinfokey.ai.say(delinfokey.user, 'The ' + input + ' has been deleted');
-
-                        fs.writeFile(path.join(__dirname, '../infoJson.json'), JSON.stringify(json), function (err){
-                            if(err){
-                                console.log('error: ', err);
-                                return;
-                            }
+                console.log('send info');
+                if(json.hasOwnProperty(input))
+                {
+                    delete json[input];
+                    delinfokey.ai.say(delinfokey.user, 'The ' + input + ' has been deleted');
+                    fs.writeFile(path.join(__dirname, '../infoJson.json'), JSON.stringify(json), function (err){
+                        if(err){
+                            console.log('error: ', err);
+                            return;
+                        }
                     
-                        });
-                        
-
-                    }else{
-                        delinfokey.ai.say(delinfokey.user, 'There is not a key call ' + input);
-                    }
-
-                
-                
+                    });
+                }else{
+                    delinfokey.ai.say(delinfokey.user, 'There is not a key call ' + input);
+                }
                 delinfokey.user = null;
-
-                
             });
         }
     };
