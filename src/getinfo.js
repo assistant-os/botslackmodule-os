@@ -36,7 +36,16 @@ function GetInfo (ai) {
             input = words[0];
             console.log('input: ' + words[0]);
 
-            var data = fs.readFileSync(path.join(__dirname, '../infoJson.json'), 'utf8');
+            var data;
+
+            try {
+                 data = fs.readFileSync(path.join(__dirname, '../infoJson.json'), 'utf8');
+            }catch(err){
+                console.log(err);
+                return false;
+            }
+
+
 
             console.log('file reading in the valid of get info');
             if (data.length == 0){
